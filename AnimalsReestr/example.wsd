@@ -1,0 +1,36 @@
+
+@startuml Example
+abstract class Animals {
+    name
+    birthday
+    size
+    ownerFio
+    - createAnimal()
+    + readCommand()
+    - updateCommand()
+    - deleteAnimal()
+}
+
+class Counter{
+    add()
+}
+
+abstract class Pets{
+    {static} quantity
+}
+abstract class Packs{
+    {static} quantity
+}
+
+Animals <|-- Pets
+Animals <|-- Packs 
+Animals *-- Counter 
+
+Pets <|-- Cat
+Pets <|-- Dog
+Pets <|-- Hamster
+
+Packs <|-- Horse
+Packs <|-- Camel
+Packs <|-- Donkey
+@enduml
