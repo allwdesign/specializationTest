@@ -1,5 +1,11 @@
 import java.util.Arrays;
 
+import AnimalsReestr.Cat;
+import AnimalsReestr.Dog;
+import AnimalsReestr.Donkey;
+import AnimalsReestr.Hamster;
+import AnimalsReestr.Horse;
+
 public class Controller {
 
     /*
@@ -9,11 +15,13 @@ public class Controller {
      * to the view, and the handling of the data to the model.
      */
     private final String[] COMMANDS = new String[] {"add", "comm", "teach", "read", "list"};
+    String[] validData = new String[3];
     private static View consoleView = new View();
+    private Validator validator = new Validator();
     
     
     protected void run() {
-       /* Run interaction with user */
+        /* Run interaction with user */
        
         // Getting data from file
 
@@ -23,10 +31,9 @@ public class Controller {
             String command = consoleView.getCommand();
 
             // Validate entered data(command)
-
             if (Arrays.asList(COMMANDS).contains(command)) {
-                System.out.println("CONTAIN");
                 // execute command
+                executeCommand(command);
             } else {
                 throw new IllegalArgumentException("Invalid command");
             }
@@ -36,6 +43,83 @@ public class Controller {
         } catch (IllegalArgumentException error) {
             System.out.println(error.getMessage());
         }
+    }
+
+    private void executeCommand(String command){
+        
+        int choiceNum;
+        String choice = consoleView.choiceOfAnimalTypeView();
+
+        try {
+                choiceNum = Integer.parseInt(choice);
+                
+        } catch(NumberFormatException e) {
+            throw new IllegalArgumentException("Invalid type of animal");
+        }
+
+        switch (command) {
+            case "add":
+                // Need params name, birthday, commands
+                String rawData = consoleView.getParams();
+                
+                try {
+                        validData = validator.verifyData(rawData.trim());
+                        // Lulu:Alur and golop:07.08.2021
+                        createAnimal(choiceNum, validData);
+                        consoleView.successfullyAddAnimalView();
+                        
+                } catch (WrongAmountOfDataException e) {
+                    System.out.println("You entered less or more data than required!");
+                } catch (NotClearDataException e) {
+                    System.out.println("The entered data was incorrect. Try again.\n");
+                }
+                
+                break;
+            case "comm":
+                System.out.println("List of commands");
+                break;
+            case "teach":
+                System.out.println("Learning new commands");
+                break;
+            case "_":
+                throw new IllegalArgumentException("Invalid command");
+        }
+
+    }
+
+    private void createAnimal(int animal, String[] data){
+        
+        String animalString;
+        switch (animal) {
+            case 1:
+                //new Horse();
+                animalString = "Horse";
+                break;
+            case 2:
+                //new Camel();
+                animalString = "Camel";
+                break;
+            case 3:
+                //new Donkey();
+                animalString = "Donkey";
+                break;
+            case 4:
+                //new Cat();
+                animalString = "Cat";
+                break;
+            case 5:
+                //new Dog();
+                animalString = "Dog";
+                break;
+            case 6:
+                //new Hamster();
+                animalString = "Hamster";
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid type of animal");
+        }
+        System.out.println("Create " + animalString + data.toString());
+        
     }
 }
 
