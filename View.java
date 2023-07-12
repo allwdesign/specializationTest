@@ -33,8 +33,6 @@ public class View {
 
         System.out.print("Enter the command: ");
         // Getting Input from User
-        // userInput = new Scanner(System.in);
-
         String command = userInput.nextLine();
 
         System.out.println("You entered string " + command);
@@ -76,12 +74,19 @@ public class View {
         String textForUser = "Enter the data separated by colon: name, commands, birthday";
 
         String dataFormatsInfo = "Data formats:";
-        dataFormatsInfo += "\n* name, commands - strings. May contain numbers, letters in different case, space and underscore";
-        dataFormatsInfo += "\n* date of birth - format string dd.mm.yyyy";
+        dataFormatsInfo += "\n* name, commands - Strings. May contain numbers, letters in different case, space and underscore";
+        dataFormatsInfo += "\n* date of birth - Format string dd.mm.yyyy";
+        dataFormatsInfo += "\n* gender - Latin character f or m";
+        dataFormatsInfo += "\n* size - Latin character s or m or b";
+        //"Small", "Midlle", "Big"
+        dataFormatsInfo += "\n\t* s - Small";
+        dataFormatsInfo += "\n\t* m - Midlle";
+        dataFormatsInfo += "\n\t* b - Big";
+        dataFormatsInfo += "\n* ownerFio - Owner data (last name, first name, patronymic)";
 
         String dataExample = "\nExample data: ";
-        dataExample += "\nLulu:Alur and golop:07.08.2021";
-        dataExample += "\nGrey Sky:Alur and golop:07.08.2021";
+        dataExample += "\n\tLulu:Alur and golop:07.08.2021:f:b:Abu Halif";
+        dataExample += "\n\tGrey Sky:Alur and golop:07.08.2021:m:m:Abu Halif";
         System.out.println("***************************************************************");
         System.out.println(textForUser);
         System.out.println("***************************************************************");
