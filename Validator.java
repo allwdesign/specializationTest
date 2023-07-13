@@ -2,7 +2,6 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,9 +10,13 @@ import java.util.regex.PatternSyntaxException;
 
 public class Validator {
 
-    final static DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-    final static DateFormat yearFormat = new SimpleDateFormat("yyyy");
-    static int GROUPSQUANTITY = 6;
+    private static DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+    private static int GROUPSQUANTITY = 6;
+    private static String STRINGREGEX = "[a-zA-Z0-9_ ]+";
+    private static String GENDERREGEX = "[f|m]";
+    private static String SIZEREGEX = "[s|m|b]";
+    private static String OWNERREGEX = "[a-zA-Z ]+";
+    private static String FORMAT_ILLEGAL = " format illegal: ";
 
     protected String[] verifyData(String userData) throws WrongAmountOfDataException, NotClearDataException {
         final String COLONREGEX = ":";
@@ -52,21 +55,15 @@ public class Validator {
         /* Parsing data */
         String BIRTHDAY_ERROR_MSG = "Birthday";
         String OWNER_ERROR_MSG = "Owner data (last name, first name, patronymic)";
-        String FORMAT_ILLEGAL = " format illegal: ";
 
         String errors = "";
 
-        String stringRegex = "[a-zA-Z0-9_ ]+";
-        String genderRegex = "[f|m]";
-        String sizeRegex = "[s|m|b]";
-        String ownerRegex = "[a-zA-Z ]+";
-
         HashMap<String, String> regexes = new HashMap<>();
-        regexes.put("name", stringRegex);
-        regexes.put("commands", stringRegex);
-        regexes.put("gender", genderRegex);
-        regexes.put("size", sizeRegex);
-        regexes.put("ownerFio", ownerRegex);
+        regexes.put("name", STRINGREGEX);
+        regexes.put("commands", STRINGREGEX);
+        regexes.put("gender", GENDERREGEX);
+        regexes.put("size", SIZEREGEX);
+        regexes.put("ownerFio", OWNERREGEX);
 
         HashMap<String, String> rawData = new HashMap<>();
         rawData.put("name", data[0]);
@@ -97,7 +94,6 @@ public class Validator {
             validateBirthday(rawData.get("birthday"));
         } catch (ParseException | IllegalArgumentException e) {
             errors += BIRTHDAY_ERROR_MSG + FORMAT_ILLEGAL + rawData.get("birthday") + "\n";
-            System.out.println("Ошибка ДР");
         }
 
         if (!errors.isEmpty()) {
@@ -123,10 +119,15 @@ public class Validator {
 
         // Check incorrect date: Was the animal born in the future?
         if (birthDate.getTime() > currentDay.getTime()) {
-            System.out.println("Родился в будущем");
             throw new IllegalArgumentException();
         }
 
+    }
+
+    protected void validateAnimalName(String name){
+        if ((!name.matches(STRINGREGEX)) || (name.isEmpty())) {           
+            throw new IllegalArgumentException("Name" + FORMAT_ILLEGAL + name);
+        }
     }
 
 }
