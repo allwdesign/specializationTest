@@ -1,20 +1,18 @@
 package AnimalsReestr;
 
-import java.util.Date;
 
-public abstract class Animal {
-    final private String[] sizes = new String[] {"Small", "Midlle", "Big"}; 
-
+public abstract class Animal implements ReestrInterface{
+    
     private String name;
     private String commands;
-    private Date birthday;
-    private Boolean gender;
+    private String birthday;
+    private String gender;
     private String size;
     private int minLifeTime;
     private int maxLifeTime;
     private String ownerFio;
     
-    public Animal(String name, String commands, Date birthday, Boolean gender, String size, int minLifeTime,
+    public Animal(String name, String commands, String birthday, String gender, String size, int minLifeTime,
             int maxLifeTime, String ownerFio) {
         this.name = name;
         this.commands = commands;
@@ -42,19 +40,19 @@ public abstract class Animal {
         this.commands = commands;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
-    public Boolean getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Boolean gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -91,6 +89,10 @@ public abstract class Animal {
     }
 
     
+    @Override
+    public String getInfo() {
+        return String.format("Name: %s Hash: %s", getName(), this.hashCode());
+    }
 
     
     
