@@ -1,0 +1,91 @@
+1  cat > pets.txt
+    2  ls -al
+    3  cat pets.txt
+    4  cat > packs.txt
+    5  ls -al
+    6  cat packs.txt
+    7  cat pets.txt packs.txt
+    8  cat pets.txt packs.txt > human_friends.txt
+    9  ls -al
+   10  mkdir test_work/ && mv human_friends.txt test_work/
+   11  ls -al
+   12  cd test_work/
+   13  ls -al
+   14  uname
+   15  uname -a
+   16  cd ~
+   17  sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 3A79BD29
+   18  gpg --recv-keys 3A79BD29
+   19  sudo apt update
+   20  apt list --upgradable
+   21  apt upgrade
+   22* 
+   23  sudo apt upgrade
+   24  history
+1  clear
+    2  gpg --recv-keys 3A79BD29
+    3  cat > mysql_pubkey.asc
+    4  gpg --import mysql_pubkey.asc
+    5  nano  /etc/apt/sources.list.d/mysql.list
+    6  cat > /etc/apt/sources.list.d/mysql.list
+    7  ls -al
+    8  ls -al /etc/apt/sources.list.d/mysql.list
+    9  sudo nano /etc/apt/sources.list.d/mysql.list
+   10  sudo apt update
+   11  gpg --import mysql_pubkey.asc
+   12  sudo apt update
+   13  ap key
+   14  apt key
+   15  apt-key
+   16  ls -al
+   17  mv mysql_pubkey.asc /etc/apt/trusted.gpg.d/
+   18  sudo mv mysql_pubkey.asc /etc/apt/trusted.gpg.d/
+   19  gpg --import mysql_pubkey.asc
+   20  cd /etc/apt/trusted.gpg.d/
+   21  ls -al
+   22  sudo chmod 644 mysql_pubkey.asc 
+   23  ls -al
+   24  gpg --import mysql_pubkey.asc
+   25  sudo apt update
+   26  history
+29  gpg --import mysql_pubkey.asc
+   30  sudo apt update
+   31  ap key
+   32  apt key
+   33  apt-key
+   34  ls -al
+   35  mv mysql_pubkey.asc /etc/apt/trusted.gpg.d/
+   36  sudo mv mysql_pubkey.asc /etc/apt/trusted.gpg.d/
+   37  gpg --import mysql_pubkey.asc
+   38  cd /etc/apt/trusted.gpg.d/
+   39  ls -al
+   40  sudo chmod 644 mysql_pubkey.asc 
+   41  ls -al
+   42  gpg --import mysql_pubkey.asc
+   43  sudo apt update
+   44  history
+   45  cd ~
+   46  cat history his.txt
+   47  cat .history his.txt
+   48  cat ~/.history his.txt
+   49  cat >> his.txt 
+   50  sudo apt install mysql-8.0
+   51  sudo apt install mysql
+   52  sudo apt install mysql-server
+   53  systemctl status mysql
+   54  mysql
+   55  mysql -u root -p
+   56  dpkg -l
+   57  dpkg -i bluez-cups
+   58  sudo su
+   59  dpkg -l
+   60  history
+sudo dpkg -i Insomnia.Core-2023.4.0.deb
+sudo apt -f install
+sudo dpkg -s insomnia
+Status: install ok installed
+sudo dpkg -r insomnia
+sudo dpkg -s insomnia
+Status: deinstall ok config-files
+sudo dpkg -P insomnia
+sudo dpkg -s insomnia
