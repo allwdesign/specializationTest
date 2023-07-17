@@ -1,13 +1,14 @@
 package AnimalsReestr;
 
+import java.util.UUID;
 
 public abstract class Packs extends Animal{
     
     private final Boolean hooves = true; 
 
-    public Packs(String name, String commands, String birthday, String gender, String size, int minLifeTime,
+    public Packs(UUID uuid, String name, String commands, String birthday, String gender, String size, int minLifeTime,
             int maxLifeTime, String ownerFio) {
-        super(name, commands, birthday, gender, size, minLifeTime, maxLifeTime, ownerFio);
+        super(uuid, "Packs", name, commands, birthday, gender, size, minLifeTime, maxLifeTime, ownerFio);
     }
 
     public Boolean getHooves() {
@@ -19,5 +20,7 @@ public abstract class Packs extends Animal{
         String res = "Type: Packs" + " " + super.getInfo();
         return res;
     }
+
+    
     
 }

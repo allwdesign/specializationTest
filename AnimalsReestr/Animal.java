@@ -1,8 +1,10 @@
 package AnimalsReestr;
 
+import java.util.UUID;
 
-public abstract class Animal implements ReestrInterface{
-    
+public abstract class Animal implements ReestrInterface {
+    private UUID uuid; 
+    private String type;
     private String name;
     private String commands;
     private String birthday;
@@ -11,9 +13,11 @@ public abstract class Animal implements ReestrInterface{
     private int minLifeTime;
     private int maxLifeTime;
     private String ownerFio;
-    
-    public Animal(String name, String commands, String birthday, String gender, String size, int minLifeTime,
-            int maxLifeTime, String ownerFio) {
+
+    public Animal(UUID uuid, String type, String name, String commands, String birthday, String gender, String size,
+            int minLifeTime, int maxLifeTime, String ownerFio) {
+        this.uuid = uuid;
+        this.type = type;
         this.name = name;
         this.commands = commands;
         this.birthday = birthday;
@@ -22,6 +26,22 @@ public abstract class Animal implements ReestrInterface{
         this.minLifeTime = minLifeTime;
         this.maxLifeTime = maxLifeTime;
         this.ownerFio = ownerFio;
+    }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getName() {
@@ -88,15 +108,20 @@ public abstract class Animal implements ReestrInterface{
         this.ownerFio = ownerFio;
     }
 
-    
     @Override
     public String getInfo() {
-        return String.format("Name: %s Hash: %s", getName(), this.hashCode());
+        String pattern = "Name: %s Commands: %s";
+        return String.format(pattern, getName(), getCommands());
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s:%s:%s:%s:%s:%s:%s:%s:%s", getUuid().toString(), getType(),
+                getClass().getSimpleName(), getName(), getCommands(), getBirthday(),
+                getGender(), getSize(), getOwnerFio());
     }
 
     
-    
-    
-    
-    
+
+
 }

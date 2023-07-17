@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,7 +20,7 @@ public class Validator {
     protected String[] verifyData(String userData) throws WrongAmountOfDataException, NotClearDataException {
         final String COLONREGEX = ":";
 
-        // Splitting a string on a space
+        // Splitting a string on a colon
         Pattern spacePattern = Pattern.compile(COLONREGEX);
         String[] rawData = spacePattern.split(userData);
 
@@ -124,9 +123,15 @@ public class Validator {
 
     }
 
-    protected void validateAnimalName(String name){
-        if ((!name.matches(STRINGREGEX)) || (name.isEmpty())) {           
+    protected void validateAnimalName(String name) {
+        if ((!name.matches(STRINGREGEX)) || (name.isEmpty())) {
             throw new IllegalArgumentException("Name" + FORMAT_ILLEGAL + name);
+        }
+    }
+
+    protected void validateAdditionalCommands(String commands) {
+        if ((!commands.matches(STRINGREGEX)) || (commands.isEmpty())) {
+            throw new IllegalArgumentException("Commands" + FORMAT_ILLEGAL + commands);
         }
     }
 

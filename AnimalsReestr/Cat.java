@@ -1,12 +1,13 @@
 package AnimalsReestr;
 
+import java.util.UUID;
 
 public class Cat extends Pets{
     // minLifeTime: 12 years
     // maxLifeTime: 18 years
 
-    public Cat(String name, String commands, String birthday, String gender, String size, String ownerFio) {
-        super(name, commands, birthday, gender, size, 12, 18, ownerFio);
+    public Cat(UUID uuid, String name, String commands, String birthday, String gender, String size, String ownerFio) {
+        super(uuid, name, commands, birthday, gender, size, 12, 18, ownerFio);
     }
 
     @Override
