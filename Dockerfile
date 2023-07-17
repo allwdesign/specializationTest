@@ -1,10 +1,10 @@
 FROM openjdk:11
+
 COPY . /usr/src/myapp
 WORKDIR /usr/src/myapp
 
-# Executes a Linux command during image build
-RUN javac Main.java
+ENV CLASSPATH=$CLASSPATH:/usr/src/myapp
 
-# Describes the command and arguments to be executed immediately after the 
-# container is started.
-CMD ["java", "Main"]
+CMD javac Main.java && java Main
+ 
+VOLUME /usr/src/myapp

@@ -1,11 +1,12 @@
 package AnimalsReestr;
 
+import java.util.UUID;
 
 public abstract class Pets extends Animal{
 
-    public Pets(String name, String commands, String birthday, String gender, String size, int minLifeTime,
+    public Pets(UUID uuid, String name, String commands, String birthday, String gender, String size, int minLifeTime,
             int maxLifeTime, String ownerFio) {
-        super(name, commands, birthday, gender, size, minLifeTime, maxLifeTime, ownerFio);
+        super(uuid, "Pets", name, commands, birthday, gender, size, minLifeTime, maxLifeTime, ownerFio);
     }
 
     @Override
